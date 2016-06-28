@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'prosemirror/version'
+require 'prose_mirror/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "opal-prosemirror"
-  spec.version       = Prosemirror::VERSION
+  spec.version       = ProseMirror::VERSION
   spec.authors       = ["Adam Jahn"]
   spec.email         = ["ajjahn@gmail.com"]
   spec.summary       = %q{Opal wrapper for ProseMirror}
