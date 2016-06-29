@@ -4,9 +4,10 @@ require "prose_mirror/node"
 
 module ProseMirror
   class Editor
-    def initialize
-      schema = Schema.new
-      @native = `new proseMirror.edit.ProseMirror({ schema: #{schema.to_n} })`
+    include Native
+
+    def schema
+      Schema.new(`#@native.schema`)
     end
 
     def doc

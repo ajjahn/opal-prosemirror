@@ -1,11 +1,12 @@
+require "native"
+require "prose_mirror/api"
+
 module ProseMirror
   class Schema
-    def initialize(native)
-      @native = `proseMirror.schemaBasic.schema`
-    end
+    include Native
 
-    def to_n
-      @native
+    def self.basic
+      new(API.schema_basic)
     end
   end
 end

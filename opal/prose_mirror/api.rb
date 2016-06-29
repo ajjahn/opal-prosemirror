@@ -2,6 +2,10 @@ module ProseMirror
   module API
     NAMESPACE = `proseMirror`
 
+    def self.schema_basic
+      `#{module_for(:schemaBasic)}.schema`
+    end
+
     def self.node_selection
       `#{module_for(:edit)}.NodeSelection`
     end

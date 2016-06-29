@@ -2,15 +2,28 @@ require "spec_helper"
 
 module ProseMirror
   RSpec.describe Editor do
-    it "has a doc node" do
-      editor = Editor.new
-      expect(editor.doc).to be_a(Node)
+    it "wraps native schema object" do
+      native = `{ schema: { type: "native" } }`
+      editor = Editor.new(native)
+
+      expect(editor.schema).to be_a(Schema)
+      expect(editor.schema.to_n.JS[:type]).to eq("native")
     end
 
-    it "has a current selection" do
-      editor = Editor.new
+    it "wraps native selection object" do
+      native = `{ selection: { type: "native" } }`
+      editor = Editor.new(native)
+
       expect(editor.selection).to be_a(Selection)
-      expect(editor.selection).to be_empty
+      expect(editor.selection.to_n.JS[:type]).to eq("native")
+    end
+
+    it "wraps native doc node object" do
+      native = `{ doc: { type: "native" } }`
+      editor = Editor.new(native)
+
+      expect(editor.doc).to be_a(Node)
+      expect(editor.doc.to_n.JS[:type]).to eq("native")
     end
 
     describe "options" do

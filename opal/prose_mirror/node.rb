@@ -1,7 +1,7 @@
+require "native"
+
 module ProseMirror
   class Node
-    def initialize(native)
-      @native = native
-    end
+    include Native
   end
 end
