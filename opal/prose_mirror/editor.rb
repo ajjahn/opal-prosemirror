@@ -1,6 +1,7 @@
 require "prose_mirror/selection"
 require "prose_mirror/schema"
 require "prose_mirror/node"
+require "prose_mirror/history"
 
 module ProseMirror
   class Editor
@@ -10,12 +11,16 @@ module ProseMirror
       Schema.new(`#@native.schema`)
     end
 
+    def selection
+      Selection.new(`#@native.selection`)
+    end
+
     def doc
       Node.new(`#@native.doc`)
     end
 
-    def selection
-      Selection.new(`#@native.selection`)
+    def history
+      History.new(`#@native.history`)
     end
   end
 end

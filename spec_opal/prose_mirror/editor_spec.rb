@@ -26,6 +26,14 @@ module ProseMirror
       expect(editor.doc.to_n.JS[:type]).to eq("native")
     end
 
+    it "wraps native history object" do
+      native = `{ history: { type: "native" } }`
+      editor = Editor.new(native)
+
+      expect(editor.history).to be_a(History)
+      expect(editor.history.to_n.JS[:type]).to eq("native")
+    end
+
     describe "options" do
       it " schema: Schema "
       it " doc: Node "
