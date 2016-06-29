@@ -3,6 +3,7 @@
 require 'bundler/gem_tasks'
 require 'bundler/setup'
 
+require 'opal-browser'
 require 'prose_mirror'
 
 require 'opal/rspec/rake_task'
