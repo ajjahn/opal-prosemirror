@@ -2,10 +2,6 @@ require "spec_helper"
 
 module ProseMirror
   RSpec.describe Editor do
-    it "takes an element" do
-      Editor.new
-    end
-
     it "has a doc node" do
       editor = Editor.new
       expect(editor.doc).to be_a(Node)
