@@ -12,5 +12,19 @@ module ProseMirror
       expect(editor.selection).to be_a(Selection)
       expect(editor.selection).to be_empty
     end
+
+    describe "options" do
+      it " schema: Schema "
+      it " doc: Node "
+      it " place: ?union<DOMNode, fn(DOMNode)> "
+      it " historyDepth: number "
+      it " historyEventDelay: number "
+      it " scrollThreshold: number "
+      it " scrollMargin: number "
+      it " keymap: Keymap "
+      it " label: ?string "
+      it " translate(string) → string "
+      it " plugins: [Plugin] "
+    end
   end
 end
