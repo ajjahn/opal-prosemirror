@@ -1,3 +1,4 @@
+require "opal"
 require "prose_mirror/version"
 
 module ProseMirror
