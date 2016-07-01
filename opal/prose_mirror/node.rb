@@ -15,5 +15,6 @@ module ProseMirror
     alias_native :mark, as: Node
     alias_native :cut, as: Node
     alias_native :slice, as: Slice
+    alias_native :replace, as: Node
   end
 end

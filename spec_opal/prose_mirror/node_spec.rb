@@ -128,6 +128,25 @@ module ProseMirror
         expect(node.slice(1,2).to_n.JS[:_type]).to eq("native")
       end
     end
+
+    describe "#replace" do
+      it "passes unwrapped slice argument to native" do
+        unwrapped = "nonsense"
+        wrapped =  Native(`{ foo: "bar" }`)
+
+        native[:replace] = -> (from, to, slice) { unwrapped = slice; `{}` }
+
+        node.replace(:_, :_, wrapped)
+        expect(`#{unwrapped} === #{wrapped.to_n}`).to be_truthy
+      end
+
+      it "wraps returned native slice object" do
+        native[:replace] = -> (from, to, slice) { { _type: "native" } }
+
+        expect(node.replace(1,2, `{}`)).to be_a(Node)
+        expect(node.replace(1,2).to_n.JS[:_type]).to eq("native")
+      end
+    end
   end
 end
 
