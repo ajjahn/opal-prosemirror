@@ -8,24 +8,10 @@ module ProseMirror
   class Editor
     include Native
 
-    def schema
-      Schema.new(`#@native.schema`)
-    end
-
-    def selection
-      Selection.new(`#@native.selection`)
-    end
-
-    def doc
-      Node.new(`#@native.doc`)
-    end
-
-    def history
-      History.new(`#@native.history`)
-    end
-
-    def transform
-      Transform.new(`#@native.tr`)
-    end
+    alias_native :schema, as: Schema
+    alias_native :selection, as: Selection
+    alias_native :doc, as: Node
+    alias_native :history, as: History
+    alias_native :transform, :tr, as: Transform
   end
 end
