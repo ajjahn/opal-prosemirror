@@ -147,6 +147,15 @@ module ProseMirror
         expect(node.replace(1,2).to_n.JS[:_type]).to eq("native")
       end
     end
+
+    describe "#node_at" do
+      it "wraps returned native node object" do
+        native[:nodeAt] = -> (pos) { { _type: "native" } }
+
+        expect(node.node_at(1)).to be_a(Node)
+        expect(node.node_at(1).to_n.JS[:_type]).to eq("native")
+      end
+    end
   end
 end
 
