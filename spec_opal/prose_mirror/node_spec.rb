@@ -72,6 +72,25 @@ module ProseMirror
         expect(`#{unwrapped} === #{wrapped.to_n}`).to be_truthy
       end
     end
+
+    describe "#copy" do
+      it "passes unwrapped Fragment argument to native" do
+        unwrapped = "nonsense"
+        wrapped = Native(`{ foo: "bar" }`)
+
+        native[:copy] = -> (fragment) { unwrapped = fragment; `{}` }
+
+        node.copy(wrapped)
+        expect(`#{unwrapped} === #{wrapped.to_n}`).to be_truthy
+      end
+
+      it "wraps returned native node object" do
+        native[:copy] = { _type: "native" }
+
+        expect(node.copy).to be_a(Node)
+        expect(node.copy.to_n.JS[:_type]).to eq("native")
+      end
+    end
   end
 end
 

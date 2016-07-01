@@ -11,5 +11,6 @@ module ProseMirror
     alias_native :node_size, :nodeSize
     alias_native :same_markup?, :sameMarkup
     alias_native :has_markup?, :hasMarkup
+    alias_native :copy, as: Node
   end
 end
