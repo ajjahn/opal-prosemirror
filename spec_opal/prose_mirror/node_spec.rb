@@ -119,6 +119,15 @@ module ProseMirror
         expect(node.cut(1,2).to_n.JS[:_type]).to eq("native")
       end
     end
+
+    describe "#slice" do
+      it "wraps returned native slice object" do
+        native[:slice] = -> (from, to) { { _type: "native" } }
+
+        expect(node.slice(1)).to be_a(Slice)
+        expect(node.slice(1,2).to_n.JS[:_type]).to eq("native")
+      end
+    end
   end
 end
 

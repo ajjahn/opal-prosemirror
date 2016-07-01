@@ -14,5 +14,6 @@ module ProseMirror
     alias_native :copy, as: Node
     alias_native :mark, as: Node
     alias_native :cut, as: Node
+    alias_native :slice, as: Slice
   end
 end
