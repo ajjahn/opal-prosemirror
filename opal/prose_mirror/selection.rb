@@ -1,5 +1,3 @@
-require "native"
-
 module ProseMirror
   class Selection
     include Native

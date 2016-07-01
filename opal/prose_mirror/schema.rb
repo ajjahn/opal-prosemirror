@@ -1,6 +1,3 @@
-require "native"
-require "prose_mirror/api"
-
 module ProseMirror
   class Schema
     include Native

@@ -1,5 +1,5 @@
 module ProseMirror
-  class Transform
+  class Mark
     include Native
   end
 end

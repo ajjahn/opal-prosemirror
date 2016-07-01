@@ -1,5 +1,5 @@
 module ProseMirror
-  class Transform
+  class NodeType
     include Native
   end
 end
