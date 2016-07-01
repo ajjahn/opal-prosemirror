@@ -91,6 +91,25 @@ module ProseMirror
         expect(node.copy.to_n.JS[:_type]).to eq("native")
       end
     end
+
+    describe "#mark" do
+      it "passes unwrapped marks array argument to native" do
+        unwrapped = "nonsense"
+        wrapped = [ Native(`{ foo: "bar" }`) ]
+
+        native[:mark] = -> (marks) { unwrapped = marks; `{}` }
+
+        node.mark(wrapped)
+        expect(`#{unwrapped}[0] === #{wrapped.first.to_n}`).to be_truthy
+      end
+
+      it "wraps returned native node object" do
+        native[:mark] = { _type: "native" }
+
+        expect(node.mark).to be_a(Node)
+        expect(node.mark.to_n.JS[:_type]).to eq("native")
+      end
+    end
   end
 end
 
