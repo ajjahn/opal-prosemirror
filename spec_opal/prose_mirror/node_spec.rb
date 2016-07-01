@@ -50,6 +50,28 @@ module ProseMirror
       node.same_markup?(wrapped)
       expect(`#{result} === #{wrapped.to_n}`).to be_truthy
     end
+
+    describe "#has_markup?" do
+      it "passes unwrapped Array[Mark] argument to native" do
+        unwrapped = "nonsense"
+        wrapped = [ Native(`{ foo: "bar" }`) ]
+
+        native[:hasMarkup] = -> (type, attrs, marks) { unwrapped = marks; true }
+
+        node.has_markup?(:_, :_, wrapped)
+        expect(`#{unwrapped}[0] === #{wrapped.first.to_n}`).to be_truthy
+      end
+
+      it "passes unwrapped NodeType argument to native" do
+        unwrapped = "nonsense"
+        wrapped = Native(`{ foo: "bar" }`)
+
+        native[:hasMarkup] = -> (type, attrs, marks) { unwrapped = type; true }
+
+        node.has_markup?(wrapped)
+        expect(`#{unwrapped} === #{wrapped.to_n}`).to be_truthy
+      end
+    end
   end
 end
 
