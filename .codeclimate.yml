@@ -1,3 +1,2 @@
 exclude_paths:
-  - opal/vendor/prose-mirror.js
-
+- opal/vendor/prose-mirror.js
