@@ -1,5 +1,7 @@
 # Opal ProseMirror
 
+[![Build Status](https://travis-ci.org/ajjahn/opal-prosemirror.svg?branch=master)](https://travis-ci.org/ajjahn/opal-prosemirror)
+
 Opal ProseMirror aims to be a *reasonable* wrapper around
 [ProseMirror](https://github.com/prosemirror/prosemirror). ProseMirror has a
 large API. This project currently only wraps a subset of it. Pull requests to
