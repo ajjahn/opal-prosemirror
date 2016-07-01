@@ -156,6 +156,36 @@ module ProseMirror
         expect(node.node_at(1).to_n.JS[:_type]).to eq("native")
       end
     end
+
+    describe "#child_after" do
+      it "wraps returned native hash object" do
+        native[:childAfter] = -> (pos) { { _type: "native" } }
+
+        expect(node.child_after(1)).to be_a(Hash)
+        expect(node.child_after(1).to_n.JS[:_type]).to eq("native")
+      end
+
+      it "wraps the native node in the hash" do
+        native[:childAfter] = -> (pos) { { node: `{}` } }
+
+        expect(node.child_after(1)[:node]).to be_a(Node)
+      end
+    end
+
+    describe "#child_before" do
+      it "wraps returned native hash object" do
+        native[:childBefore] = -> (pos) { { _type: "native" } }
+
+        expect(node.child_before(1)).to be_a(Hash)
+        expect(node.child_before(1).to_n.JS[:_type]).to eq("native")
+      end
+
+      it "wraps the native node in the hash" do
+        native[:childBefore] = -> (pos) { { node: `{}` } }
+
+        expect(node.child_before(1)[:node]).to be_a(Node)
+      end
+    end
   end
 end
 

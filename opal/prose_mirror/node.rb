@@ -17,5 +17,23 @@ module ProseMirror
     alias_native :slice, as: Slice
     alias_native :replace, as: Node
     alias_native :node_at, :nodeAt, as: Node
+
+    def child_after(pos)
+      return unless value = Native.call(@native, :childAfter, pos)
+      wrap_hash_value_with_key(Hash.new(value.to_n), :node, Node)
+    end
+
+    def child_before(pos)
+      return unless value = Native.call(@native, :childBefore, pos)
+      wrap_hash_value_with_key(Hash.new(value.to_n), :node, Node)
+    end
+
+    private
+
+    def wrap_hash_value_with_key(hash, key, as)
+      hash.tap do |h|
+        h[key] = as.new(h[key].to_n) if h[key]
+      end
+    end
   end
 end
