@@ -90,6 +90,19 @@ it [{pos: number, node: Node}]} "
       it " scheduleDOMUpdate(f: fn() → ?fn() → ?fn()) "
       it " unscheduleDOMUpdate(f: fn() → ?fn() → ?fn()) "
       it " updateScheduler(subscriptions: [Subscription], start: fn() → ?fn()) → UpdateScheduler "
+    def stub_native(native, method, value)
+      `#{ native }[#{ method }] = #{ -> { value } }`
+      native
+    end
+
+    describe "#active_marks" do
+      it "returns a list of marks" do
+      native = stub_native(`{}`, :activeMarks, `[ { type: "native" } ]` )
+      editor = Editor.new(native)
+
+      expect(editor.active_marks.first).to be_a(Mark)
+      expect(editor.active_marks.first.to_n.JS[:type]).to eq("native")
+      end
     end
   end
 end

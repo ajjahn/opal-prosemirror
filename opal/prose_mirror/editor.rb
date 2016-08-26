@@ -1,11 +1,10 @@
 require "native"
-require "prose_mirror/selection"
 require "prose_mirror/schema"
+require "prose_mirror/selection"
 require "prose_mirror/value_object"
 require "prose_mirror/fragment"
 require "prose_mirror/mark"
 require "prose_mirror/node_type"
-require "prose_mirror/slice"
 require "prose_mirror/node"
 require "prose_mirror/history"
 require "prose_mirror/transform"
@@ -19,5 +18,10 @@ module ProseMirror
     alias_native :doc, as: Node
     alias_native :history, as: History
     alias_native :transform, :tr, as: Transform
+    alias_native :wrapper
+
+    def active_marks
+      `#@native.activeMarks()`.map { |mark| Mark.new(mark) }
+    end
   end
 end
