@@ -13,10 +13,10 @@ module ProseMirror
   class Editor
     include Native
 
-    alias_native :schema, as: Schema
-    alias_native :selection, as: Selection
-    alias_native :doc, as: Node
-    alias_native :history, as: History
+    alias_native :schema, :schema, as: Schema
+    alias_native :selection, :selection, as: Selection
+    alias_native :doc, :doc, as: Node
+    alias_native :history, :history, as: History
     alias_native :transform, :tr, as: Transform
     alias_native :wrapper
 

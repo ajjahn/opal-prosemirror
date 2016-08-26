@@ -9,8 +9,8 @@ module ProseMirror
     alias_native :depth
     alias_native :parent_offset, :parentOffset
     alias_native :resolve_depth, :resolveDepth
-    alias_native :parent, as: Node
-    alias_native :node, as: Node
+    alias_native :parent, :parent, as: Node
+    alias_native :node, :node, as: Node
     alias_native :index
     alias_native :index_after, :indexAfter
     alias_native :start
