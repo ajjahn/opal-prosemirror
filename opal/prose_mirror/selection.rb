@@ -28,7 +28,7 @@ module ProseMirror
   end
 
   class NodeSelection < Selection
-    alias_native :node, as: Node
+    alias_native :node, :node, as: Node
   end
 
   class TextSelection < Selection
