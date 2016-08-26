@@ -186,6 +186,18 @@ module ProseMirror
         expect(node.child_before(1)[:node]).to be_a(Node)
       end
     end
+
+    it "nodesBetween"
+    it "descendants"
+
+    describe "#resolve" do
+      # it "wraps returned native ResolvedPos object" do
+      #   native[:resolve] = -> (pos) { { _type: "native" } }
+
+      #   expect(node.resolve(1)).to be_a(ResolvedPos)
+      #   expect(node.resolve(1).to_n.JS[:_type]).to eq("native")
+      # end
+    end
   end
 end
 

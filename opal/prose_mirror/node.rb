@@ -1,3 +1,10 @@
+require "prose_mirror/value_object"
+require "prose_mirror/fragment/node_methods"
+require "prose_mirror/node_type"
+require "prose_mirror/mark"
+require "prose_mirror/slice"
+require "prose_mirror/fragment"
+
 module ProseMirror
   class Node
     include Native
@@ -17,6 +24,7 @@ module ProseMirror
     alias_native :slice, as: Slice
     alias_native :replace, as: Node
     alias_native :node_at, :nodeAt, as: Node
+    alias_native :resolve
 
     def child_after(pos)
       return unless value = Native.call(@native, :childAfter, pos)
